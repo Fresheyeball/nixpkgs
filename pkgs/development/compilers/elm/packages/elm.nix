@@ -10,9 +10,9 @@ mkDerivation {
   pname = "elm";
   version = "0.19.0";
   src = fetchgit {
-    url = "https://github.com/elm/compiler";
-    sha256 = "13jks6c6i80z71mjjfg46ri570g5ini0k3xw3857v6z66zcl56x4";
-    rev = "d5cbc41aac23da463236bbc250933d037da4055a";
+    url = "https://github.com/CurrySoftware/compiler";
+    sha256 = "1m0ffvjjydwdmv3drqri23zh0k91c18x180j78viy1pgmp3x6kg0";
+    rev = "83e7c042ab3d636f6674abddac0f18b280d4b84a";
     fetchSubmodules = true;
   };
   isLibrary = false;
@@ -25,7 +25,7 @@ mkDerivation {
     snap-server template-haskell text time unordered-containers
     utf8-string vector zip-archive
   ];
-  homepage = "http://elm-lang.org";
+  homepage = "https://elm-lang.org";
   description = "The `elm` command line interface";
   license = stdenv.lib.licenses.bsd3;
 }
