@@ -108,7 +108,7 @@ let
     "LD_LIBRARY_PATH=${cudaStub}\${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} ";
 
 in buildPythonPackage rec {
-  version = "1.2.0";
+  version = "1.3.1";
   pname = "pytorch";
   disabled = !isPy3k;
 
@@ -120,9 +120,10 @@ in buildPythonPackage rec {
   src = fetchFromGitHub {
     owner  = "pytorch";
     repo   = "pytorch";
-    rev    = "v${version}";
+    # rev    = "v${version}";
+    rev = "e7e6d56b776748f25378e0a09d5dc1f1e5a7d8d9";
     fetchSubmodules = true;
-    sha256 = "1biyq2p48chakf2xw7hazzqmr5ps1nx475ql8vkmxjg5zaa071cz";
+    sha256 = "04mnqrjkdmvk8dg89l7qhpwmw8phwlls8l81k1l9x63i34r0jvys";
   };
 
   dontUseCmakeConfigure = true;
@@ -201,6 +202,7 @@ in buildPythonPackage rec {
     mkdir $dev
     cp -r $out/${python.sitePackages}/torch/lib     $dev/lib
     cp -r $out/${python.sitePackages}/torch/include $dev/include
+    cp -r ${src}/c10/* $dev/include/c10/
   '';
 
   postFixup = stdenv.lib.optionalString stdenv.isDarwin ''

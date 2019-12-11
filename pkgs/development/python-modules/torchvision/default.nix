@@ -5,19 +5,43 @@
 , pillow
 , pytorch
 , lib
+, fetchFromGitHub
+, which
+, cudatoolkit
+, linuxPackages
+, cmake
+, utillinux
+, ninja
 }:
 
 buildPythonPackage rec {
-  version = "0.2.1";
+  version = "0.4.2";
   pname   = "torchvision";
 
-  format = "wheel";
-
-  src = fetchPypi {
-    inherit pname version;
-    format = "wheel";
-    sha256 = "18gvdabkmzfjg47ns0lw38mf85ry28nq1mas5rzlwvb4l5zmw2ms";
+  src = fetchFromGitHub {
+    owner  = "pytorch";
+    repo   = "vision";
+    rev    = "v${version}";
+    fetchSubmodules = true;
+    sha256 = "0xzn9qm55z8gjs5r1irxyfh5402hczzc34fyfhlzpzkhd59fcz7m";
   };
+
+  nativeBuildInputs = [
+    cmake
+    utillinux
+    which
+    cudatoolkit
+    linuxPackages.nvidia_x11
+    ninja
+    pytorch
+  ];
+
+  dontUseCmakeConfigure = true;
+  doCheck = false;
+
+  buildInputs = [ pytorch ];
+
+  FORCE_CUDA="1";
 
   propagatedBuildInputs = [ six numpy pillow pytorch ];
 
