@@ -20,7 +20,7 @@
 }:
 let
   pname = "github-actions-runner";
-  version = "2.285.0";
+  version = "2.285.1";
 
   deps = (import ./deps.nix { inherit fetchurl; });
   nugetPackages = map
@@ -86,8 +86,8 @@ stdenv.mkDerivation rec {
     repo = "runner";
     # v${version} would be better but causes nuget to barf,
     # so hash version of the tag instead.
-    rev = "c75a77df668b81fa8d517fda2bb20b4f96dd9d6e";
-    sha256 = "sha256-vlipA1ovVkBrwpZ8B0bMEykBMUwOaYzV+/FxY9kT6Z4=";
+    rev = "50afba61b40932c1084e31b5e9e7f5af325cc2ac";
+    sha256 = "sha256-SlKUuebsoZ9OgYuDTNOlY1KMg01LFSFazrLCctiFq3A=";
   };
 
   nativeBuildInputs = [
