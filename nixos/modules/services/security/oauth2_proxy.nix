@@ -22,7 +22,7 @@ let
 
     google = cfg: { google = with cfg.google; optionalAttrs (groups != []) {
       admin-email = adminEmail;
-      service-account = serviceAccountJSON;
+      service-account-json = serviceAccountJSON;
       group = groups;
     }; };
   };
