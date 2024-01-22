@@ -13,6 +13,7 @@ npmConfigHook() {
 
     echo "Configuring npm"
 
+    local old_home="$HOME"
     export HOME="$TMPDIR"
     export npm_config_nodedir="@nodeSrc@"
     export npm_config_node_gyp="@nodeGyp@"
@@ -115,6 +116,7 @@ npmConfigHook() {
     fi
 
     echo "Finished npmConfigHook"
+    export HOME="$old_home"
 }
 
 postPatchHooks+=(npmConfigHook)

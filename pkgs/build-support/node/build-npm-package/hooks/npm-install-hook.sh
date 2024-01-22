@@ -1,6 +1,7 @@
 # shellcheck shell=bash
 
 npmInstallHook() {
+    export HOME="$TMPDIR"
     echo "Executing npmInstallHook"
 
     runHook preInstall
